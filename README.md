@@ -28,7 +28,7 @@ Now, run the ACGT annotation with the following command:
 ```bash
 gatk VariantAnnotator \
   -V your.normalized.vcf.gz \
-  -O your.ACGT.vcf.gz \
+  -O your.annontated.ACGT.vcf.gz \
   --resource:ACGT acgt.ACcounts.noSamples.normalized.vcf.gz \
   --expression ACGT.AF \
   --expression ACGT.AC \
