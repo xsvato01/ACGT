@@ -14,7 +14,7 @@ First, download the final VCF file along with its index from the following link:
 
 ## 2. Normalize Your VCF
 
-To ensure compatibility ([see](https://gatk.broadinstitute.org/hc/en-us/community/posts/15706942393371-Error-when-running-VariantAnnotator?page=1#community_comment_29137996930971)) with **GATK VariantAnnotator**, you need to normalize your `.vcf` file using `bcftools`. This will split and re-align variants. Run the following command:
+To ensure compatibility ([see](https://gatk.broadinstitute.org/hc/en-us/community/posts/15706942393371-Error-when-running-VariantAnnotator?page=1#community_comment_29137996930971)) with **GATK VariantAnnotator**, you need to normalize your `.vcf` file using `bcftools`. This will split multiallelic sites. Run the following command:
 
 ```bash
 bcftools norm -m -both -o your.normalized.vcf.gz -Oz your.input.vcf.gz
