@@ -37,7 +37,7 @@ Now, run the ACGT annotation with the following command:
 gatk VariantAnnotator \
   -V your.normalized.vcf.gz \
   -O your.annontated.ACGT.vcf.gz \
-  --resource:ACGT acgt.ACcounts.noSamples.normalized.vcf.gz \
+  --resource:ACGT ACGT.ACCounts.noSamples.vcf.gz \
   --expression ACGT.AF \
   --expression ACGT.AC \
   --expression ACGT.AC_Hom \
