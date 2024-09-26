@@ -4,7 +4,7 @@ This repository contains a step-by-step tutorial to annotate your genomic varian
 
 ---
 
-## 1. Download the Reference File
+## 1. Download the ACGT Reference File
 
 First, download the final VCF file along with its index from the following link:
 
@@ -14,11 +14,19 @@ First, download the final VCF file along with its index from the following link:
 
 ## 2. Normalize Your VCF
 
-To ensure compatibility ([see](https://gatk.broadinstitute.org/hc/en-us/community/posts/15706942393371-Error-when-running-VariantAnnotator?page=1#community_comment_29137996930971)) with **GATK VariantAnnotator**, you need to normalize your `.vcf` file using `bcftools`. This will split multiallelic sites. Run the following command:
+To ensure compatibility ([see](https://gatk.broadinstitute.org/hc/en-us/community/posts/15706942393371-Error-when-running-VariantAnnotator?page=1#community_comment_29137996930971)) with **GATK VariantAnnotator**, you need to normalize your `.vcf` file using `bcftools`. This will split multiallelic sites and re-align indels. Run the following command:
 
 ```bash
-bcftools norm -m -both -o your.normalized.vcf.gz -Oz your.input.vcf.gz
+bcftools norm -f ./ref/Homo_sapiens_assembly38.fasta -m -both -o your.normalized.vcf.gz -Oz your.input.vcf.gz
 ```
+
+In case you do not have GRCh38 reference, download it using the following command:
+```bash
+aws s3 --no-sign-request --region eu-west-1 sync s3://ngi-igenomes/igenomes/Homo_sapiens/GATK/GRCh38/Sequence/WholeGenomeFasta/ ./ref/
+```
+
+Any additional files, such as the BWA index, can be downloaded according to the instructions on [this website](https://ewels.github.io/AWS-iGenomes/).
+
 ---
 
 ## 3. Annotate Your VCF
